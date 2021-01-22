@@ -23,6 +23,16 @@ Below are the general technical assumptions of the project:
 - [Paho MQTT](https://pypi.org/project/paho-mqtt/) - Python library for handling the MQTT protocol, which is responsible for communication between the server and individual clients
 - [Noble](https://github.com/abandonware/noble) - A Node.js BLE (Bluetooth Low Energy) central module.
 
+## Devices used in our demo
+We have tested the following design on our hardware environment consisting of:
+- 2x Raspberry Pi 4b with Raspberry Pi OS 5.4
+- JBL Flip and Tibo Choros Porta connected with AUX cable (any speakers should do tbh)
+- Smartphone(either of the following): 
+  - Android 10 phone used as a beacon with [Beacon Simulator app](https://play.google.com/store/apps/details?id=net.alea.beaconsimulator)
+  - iPhone 12 mini - iOS 14.3 with [Beacon Simulator app](https://apps.apple.com/pl/app/beacon-simulator/id1380778696)
+- PC with Ubuntu 20.04 LTS that acts as a server
+
+
 ## Installation
 ### Server
 A device running Ubuntu 20.04 LTS is required to run the server, although it should also work on a Raspberry Pi.
@@ -103,6 +113,7 @@ sudo npm install mqtt
 sudo apt-get install bluetooth bluez libbluetooth-dev libudev-dev
 sudo npm install @abandonware/noble
 sudo npm install node-beacon-scanner
+sudo setcap cap_net_raw+eip $(eval readlink -f which node)
 ```
 You should now be able to run the scanner.js script posted in this repository:
 ```
